@@ -1,3 +1,14 @@
+@import url('https://fonts.cdnfonts.com/css/mollie-glaston');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --font-mollie-glaston: "Mollie Glaston", serif;
+}
+
+th, td {
+    padding-inline: 4px;
+    padding-block: 2px;
+}

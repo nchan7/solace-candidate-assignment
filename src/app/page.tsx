@@ -21,13 +21,12 @@ export default function Home() {
   useEffect(() => {
     const fetchAdvocates = async () => {
       try {
-        console.log("fetching advocates...");
         const response = await fetch("/api/advocates");
         const jsonResponse = await response.json();
         setAdvocates(jsonResponse.data);
         setFilteredAdvocates(jsonResponse.data);
       } catch (error) {
-        console.log("Error fetching advocates:", error);
+        console.error("Error fetching advocates:", error);
       }
     };
     fetchAdvocates();
@@ -37,7 +36,6 @@ export default function Home() {
     const searchInputTerm = e.target.value.toLowerCase();    
     setSearchTerm(searchInputTerm);
     
-    console.log("filtering advocates...");
     const filteredAdvocates = advocates?.filter((advocate) => {
       return (
         advocate.firstName?.toLowerCase().includes(searchTerm) ||
@@ -53,28 +51,34 @@ export default function Home() {
   };
 
   const handleResetClick = () => {
-    console.log(advocates);
     setSearchTerm("");
     setFilteredAdvocates(advocates);
   };
 
+  const formatPhoneNumber = (number: number): string => {
+    const phoneNumber = number.toString();
+    return phoneNumber.slice(0,3) + "-" + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, phoneNumber.length)
+
+  }
+
   return (
-    <main style={{ margin: "24px" }}>
-      <h1>Solace Advocates</h1>
+    <main className="m-24 flex flex-col h-screen">
+      <h1 className="-text--primary--default text-5xl font-bold">Solace Advocates</h1>
       <br />
       <br />
-      <div>
-        <p>Search</p>
+      <div className="my-4 flex items-center gap-2 relative  rounded-lg max-w-4xl">
+        {/* <p>Search</p>
         <p>
-          Searching for: <span id="search-term"></span>
-        </p>
-        <input style={{ border: "1px solid black" }} onChange={handleSearchClick} />
-        <button onClick={handleResetClick}>Reset Search</button>
+          Search: <span id="search-term"></span>
+        </p> */}
+        <label htmlFor="search-input">Search</label>
+        <input id="search-input" className="focus-within:ring focus-within:-ring--primary--focused flex-1 p-2 -bg--neutral--light-grey -text--neutral--grey placeholder-neutral--light-gray rounded-lg focus:outline-none" onChange={handleSearchClick} />
+        <button className="px-4 py-2 -bg--primary--default hover:-bg--primary--focused absolute right-0 rounded-r-md -text--neutral--white hover:-text--accent--gold--light font-bold" onClick={handleResetClick}>Reset Search</button>
       </div>
       <br />
       <br />
-      <table>
-        <thead>
+      <table className="table-auto sm:table-fixed w-full border-collapse">
+        <thead className="sticky top-0 -bg--primary--default text-white z-10 text-left"> 
           <tr>
             <th>First Name</th>
             <th>Last Name</th>
@@ -85,21 +89,21 @@ export default function Home() {
             <th>Phone Number</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-left">
           {filteredAdvocates?.map((advocate, index) => {
             return (
-              <tr key={index}>
+              <tr key={index} className="even:-bg--accent--mid-opal">
                 <td>{advocate.firstName}</td>
                 <td>{advocate.lastName}</td>
                 <td>{advocate.city}</td>
                 <td>{advocate.degree}</td>
                 <td>
                   {advocate.specialties.map((s, index) => (
-                    <div key={index}>{s}</div>
+                    <div key={index} className="even:-text--primary--default">{s}</div>
                   ))}
                 </td>
-                <td>{advocate.yearsOfExperience}</td>
-                <td>{advocate.phoneNumber}</td>
+                <td className="pl-4">{advocate.yearsOfExperience}</td>
+                <td>{formatPhoneNumber(advocate.phoneNumber)}</td>
               </tr>
             );
           })}
