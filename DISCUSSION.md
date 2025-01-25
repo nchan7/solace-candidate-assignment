@@ -33,7 +33,8 @@ Below are some suggested next steps to continue to improve the front end and bac
 - Conduct error handling
 - Include authentication if needed for users or administrators.
 
-### Sources
+
+## Sources
 Below are some of the the sources I used to complete this assignment. Due to the public nature of this assignment, there were other repos I was able to reference so I wanted to acknowledge their work here as well. 
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - https://github.com/archerc56/solace-candidate-assignment
