@@ -1,6 +1,6 @@
 # SUBMISSION
 
-Please see Pull Requests for this submission here: [Solace Candidate Assignment Submission PRs](https://github.com/nchan7/solace-candidate-assignment/pulls)
+Please see Pull Requests for this submission here: [Solace Candidate Assignment Submission PR](https://github.com/nchan7/solace-candidate-assignment/pulls)
 
 ## Thought Process and Outline of Work
 
