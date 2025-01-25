@@ -13,7 +13,6 @@ export interface Advocate {
 }
 
 export default function Home() {
-  // const RESULTS_PER_PAGE = 10;
   const [advocates, setAdvocates] = useState<Advocate[]>();
   const [filteredAdvocates, setFilteredAdvocates] = useState<Advocate[]>();
   const [searchTerm, setSearchTerm] = useState("");
@@ -67,10 +66,6 @@ export default function Home() {
       <br />
       <br />
       <div className="my-4 flex items-center gap-2 relative  rounded-lg max-w-4xl">
-        {/* <p>Search</p>
-        <p>
-          Search: <span id="search-term"></span>
-        </p> */}
         <label htmlFor="search-input">Search</label>
         <input id="search-input" className="focus-within:ring focus-within:-ring--primary--focused flex-1 p-2 -bg--neutral--light-grey -text--neutral--grey placeholder-neutral--light-gray rounded-lg focus:outline-none" onChange={handleSearchClick} />
         <button className="px-4 py-2 -bg--primary--default hover:-bg--primary--focused absolute right-0 rounded-r-md -text--neutral--white hover:-text--accent--gold--light font-bold" onClick={handleResetClick}>Reset Search</button>
