@@ -33,7 +33,7 @@ export default function Home() {
     fetchAdvocates();
   }, []);
 
-  const handleSearchClick = (e) => {
+  const handleSearchClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchInputTerm = e.target.value.toLowerCase();    
     setSearchTerm(searchInputTerm);
     
